@@ -38,7 +38,9 @@ test("server-renders the Sangrok clinic information page", async () => {
   assert.match(html, /010-7650-4365/);
   assert.match(html, /booking\.naver\.com\/booking\/13\/bizes\/288249/);
   assert.match(html, /우석대학교 수석 입학·졸업/);
-  assert.match(html, /평일 09:00–18:30/);
+  assert.match(html, /365일 진료 안내/);
+  assert.match(html, /일요일·공휴일 14:00–18:00/);
+  assert.match(html, /추석 연휴·구정 연휴·크리스마스/);
   assert.match(html, /application\/ld\+json/);
 
   for (const prohibitedClaim of [
