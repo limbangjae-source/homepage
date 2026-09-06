@@ -341,7 +341,7 @@ export default function Home() {
           <ul>
             <li>추석 연휴·구정 연휴·크리스마스 등 휴일의 휴진 여부</li>
             <li>주소의 최종 표기와 주차 안내</li>
-            <li>개인정보처리방침 전문</li>
+            <li>개인정보 보호책임자 또는 개인정보 문의 담당부서의 공식 정보</li>
           </ul>
         </section>
       </main>
@@ -355,7 +355,7 @@ export default function Home() {
           </span>
         </div>
         <p>본 사이트의 의료정보는 일반적인 안내를 위한 것이며, 개인 상태에 따른 진료는 의료진 상담이 필요합니다.</p>
-        <p className="needs-confirmation">개인정보처리방침 확인 필요</p>
+        <a className="footer-policy" href="/privacy">개인정보처리방침</a>
       </footer>
 
       <div className="mobile-contact" aria-label="모바일 상담 안내">

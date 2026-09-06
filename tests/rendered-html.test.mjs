@@ -41,6 +41,7 @@ test("server-renders the Sangrok clinic information page", async () => {
   assert.match(html, /365일 진료 안내/);
   assert.match(html, /일요일·공휴일 14:00–18:00/);
   assert.match(html, /추석 연휴·구정 연휴·크리스마스/);
+  assert.match(html, /href="\/privacy"/);
   assert.match(html, /application\/ld\+json/);
 
   for (const prohibitedClaim of [
@@ -57,8 +58,9 @@ test("server-renders the Sangrok clinic information page", async () => {
 });
 
 test("removes starter preview assets and keeps safe information boundaries", async () => {
-  const [page, layout, css, packageJson] = await Promise.all([
+  const [page, privacyPage, layout, css, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/privacy/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
@@ -69,7 +71,11 @@ test("removes starter preview assets and keeps safe information boundaries", asy
   assert.match(page, /010-7650-4365/);
   assert.match(page, /tel:0637144365/);
   assert.match(page, /booking\.naver\.com\/booking\/13\/bizes\/288249/);
-  assert.match(page, /개인정보처리방침 확인 필요/);
+  assert.match(page, /href="\/privacy"/);
+  assert.match(privacyPage, /개인정보처리방침/);
+  assert.match(privacyPage, /홈페이지에서 직접 수집하거나 저장하지 않습니다/);
+  assert.match(privacyPage, /네이버 예약의 별도 웹페이지/);
+  assert.match(privacyPage, /개인정보 보호책임자 또는 담당부서/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview|codex-preview/);
   assert.match(layout, /<html lang="ko">/);
   assert.doesNotMatch(layout, /Starter Project|codex-preview/);
