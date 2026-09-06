@@ -41,6 +41,8 @@ test("server-renders the Sangrok clinic information page", async () => {
   assert.match(html, /365일 진료 안내/);
   assert.match(html, /일요일·공휴일 14:00–18:00/);
   assert.match(html, /추석 연휴·구정 연휴·크리스마스/);
+  assert.match(html, /전북특별자치도 전주시 덕진구 기지로 66, 303호/);
+  assert.match(html, /지하 1–3층 2시간 무료 주차 가능/);
   assert.match(html, /href="\/privacy"/);
   assert.match(html, /application\/ld\+json/);
 
@@ -75,7 +77,7 @@ test("removes starter preview assets and keeps safe information boundaries", asy
   assert.match(privacyPage, /개인정보처리방침/);
   assert.match(privacyPage, /홈페이지에서 직접 수집하거나 저장하지 않습니다/);
   assert.match(privacyPage, /네이버 예약의 별도 웹페이지/);
-  assert.match(privacyPage, /개인정보 보호책임자 또는 담당부서/);
+  assert.match(privacyPage, /개인정보 보호책임자.*원장 임용현/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview|codex-preview/);
   assert.match(layout, /<html lang="ko">/);
   assert.doesNotMatch(layout, /Starter Project|codex-preview/);

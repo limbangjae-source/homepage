@@ -61,8 +61,8 @@ const policySections = [
     content: (
       <div className="policy-contact-card">
         <p><strong>개인정보 문의 접수:</strong> 상록한의원 대표전화 063-714-4365</p>
-        <p><strong>개인정보 보호책임자 또는 담당부서:</strong> 공식 지정 정보 확인 후 이 방침에 반영 예정</p>
-        <p className="policy-muted">담당자 성명 또는 담당부서 명칭은 공개 전 최종 확인이 필요한 항목입니다.</p>
+        <p><strong>개인정보 보호책임자:</strong> 원장 임용현</p>
+        <p className="policy-muted">개인정보 관련 문의와 권리 행사는 대표전화로 접수해 주세요.</p>
       </div>
     ),
   },
