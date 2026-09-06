@@ -48,11 +48,19 @@ const columns = [
   },
 ];
 
+const doctorCredentials = [
+  "우석대학교 수석 입학·졸업",
+  "한방레이저의학회 정회원",
+  "미국초음파사 자격증(RMSK) 취득",
+  "대한융합한의학회 정회원",
+  "미래(류의태-허준) 최우수상 수상",
+];
+
 const faqItems = [
   {
     question: "일요일이나 공휴일에도 진료하나요?",
     answer:
-      "원천자료에는 일요일·공휴일 오후 2시부터 6시까지 진료한다고 안내되어 있습니다. 요일별 진료시간과 휴진일은 최종 확인이 필요합니다.",
+      "현재 안내된 진료시간은 평일 오전 9시부터 오후 6시 30분, 토요일 오전 9시부터 오후 1시까지입니다. 일요일·공휴일 진료 여부와 휴진일은 확인이 필요합니다.",
   },
   {
     question: "한의원인데 입원도 가능한가요?",
@@ -186,9 +194,17 @@ export default function Home() {
               </div>
               <div>
                 <dt>의료진 이력</dt>
-                <dd className="needs-confirmation">상세 학력·경력 확인 필요</dd>
+                <dd>학력·학회 활동·자격 이력 안내</dd>
               </div>
             </dl>
+            <div className="doctor-credentials" aria-label="임용현 원장 이력">
+              <h3>의료진 이력</h3>
+              <ul>
+                {doctorCredentials.map((credential) => (
+                  <li key={credential}>{credential}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -301,18 +317,18 @@ export default function Home() {
           <div className="visit-card" id="contact">
             <div>
               <span>진료시간</span>
-              <strong>일요일·공휴일 14:00–18:00</strong>
-              <p>원천자료에 확인된 일부 시간입니다. 평일·토요일·휴진일 확인 필요</p>
+              <strong>평일 09:00–18:30</strong>
+              <p>점심시간 13:00–14:00 · 토요일 09:00–13:00<br />일요일·공휴일 및 휴진일 확인 필요</p>
             </div>
             <div>
               <span>전화 상담</span>
-              <strong className="needs-confirmation">대표 전화번호 확인 필요</strong>
-              <p>정확한 번호 확인 전에는 전화 연결 버튼을 제공하지 않습니다.</p>
+              <strong><a className="contact-link" href="tel:0637144365">주간 063-714-4365</a></strong>
+              <p><a className="contact-link" href="tel:01076504365">야간 010-7650-4365</a></p>
             </div>
             <div>
               <span>온라인 예약</span>
-              <strong className="needs-confirmation">예약 링크 확인 필요</strong>
-              <p>원천자료에는 네이버 예약 운영 기록이 있으나, 현재 링크 확인이 필요합니다.</p>
+              <strong><a className="contact-link" href="https://booking.naver.com/booking/13/bizes/288249" target="_blank" rel="noreferrer">네이버 온라인 예약</a></strong>
+              <p>예약 가능 시간과 상세 내용은 네이버 예약 페이지에서 확인해 주세요.</p>
             </div>
           </div>
         </section>
@@ -323,9 +339,9 @@ export default function Home() {
             <h2 id="notice-title">공식 정보 확인이 필요한 항목</h2>
           </div>
           <ul>
-            <li>대표 전화번호, 요일별 진료시간, 점심시간 및 휴진일</li>
-            <li>의료진의 학력·경력·학회 활동과 상세 진료 이력</li>
-            <li>주차 안내, 현재 예약 링크, 개인정보처리방침</li>
+            <li>일요일·공휴일 진료 여부와 휴진일</li>
+            <li>주소의 최종 표기와 주차 안내</li>
+            <li>개인정보처리방침 전문</li>
           </ul>
         </section>
       </main>
@@ -343,10 +359,11 @@ export default function Home() {
       </footer>
 
       <div className="mobile-contact" aria-label="모바일 상담 안내">
-        <span>전화번호 확인 후 바로 연결됩니다</span>
-        <button type="button" disabled aria-disabled="true">
-          대표 전화번호 확인 필요
-        </button>
+        <span>전화 상담</span>
+        <div className="mobile-contact-actions">
+          <a href="tel:0637144365">주간 전화</a>
+          <a href="tel:01076504365">야간 전화</a>
+        </div>
       </div>
     </>
   );

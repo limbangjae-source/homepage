@@ -34,7 +34,11 @@ test("server-renders the Sangrok clinic information page", async () => {
   assert.match(html, /상록한의원/);
   assert.match(html, /교통사고 후유증/);
   assert.match(html, /자주 묻는 질문/);
-  assert.match(html, /대표 전화번호 확인 필요/);
+  assert.match(html, /063-714-4365/);
+  assert.match(html, /010-7650-4365/);
+  assert.match(html, /booking\.naver\.com\/booking\/13\/bizes\/288249/);
+  assert.match(html, /우석대학교 수석 입학·졸업/);
+  assert.match(html, /평일 09:00–18:30/);
   assert.match(html, /application\/ld\+json/);
 
   for (const prohibitedClaim of [
@@ -59,7 +63,10 @@ test("removes starter preview assets and keeps safe information boundaries", asy
   ]);
 
   assert.match(page, /type="application\/ld\+json"/);
-  assert.match(page, /대표 전화번호 확인 필요/);
+  assert.match(page, /063-714-4365/);
+  assert.match(page, /010-7650-4365/);
+  assert.match(page, /tel:0637144365/);
+  assert.match(page, /booking\.naver\.com\/booking\/13\/bizes\/288249/);
   assert.match(page, /개인정보처리방침 확인 필요/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview|codex-preview/);
   assert.match(layout, /<html lang="ko">/);
